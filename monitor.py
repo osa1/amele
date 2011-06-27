@@ -17,7 +17,7 @@ from fsmonitor import FSMonitorThread, FSEvent
 # dict ve list'den eleman alma thread-safe olduguna gore, bunda
 # lock kullanmali miyim?
 commands = {}
-json_path = os.path.join(os.getenv("HOME"), 'dinleyici')
+json_path = os.path.join(os.getenv("HOME"), 'amele')
 formats = commands.keys()
 
 replace = {'_path_': lambda x: x[0] if not x[0].endswith('/') else x[0][:-1],
@@ -25,8 +25,6 @@ replace = {'_path_': lambda x: x[0] if not x[0].endswith('/') else x[0][:-1],
            '_frm_' : lambda x: file_format(x[1])}
 
 folders = []
-
-monitor = None
 
 
 def load_json(json_name):
@@ -63,7 +61,7 @@ def add_folder(path, recursive=False):
         # yine de zaten birkac klasor olacagindan sorun olacagini sanmiyorum
         if f[0] == path:
             return False
-    folders.append((path, recursive))
+    folders.append([path, recursive])
     save_folders()
     return True
 
