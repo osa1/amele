@@ -8,16 +8,14 @@
 # aslinda burda module singleton gorevi de goruyor, o acidan iyi gibi sanki
 
 import os
-import sys
 import json
 import time
-import threading
 from fsmonitor import FSMonitorThread, FSEvent
 
 # dict ve list'den eleman alma thread-safe olduguna gore, bunda
 # lock kullanmali miyim?
 commands = {}
-json_path = os.path.join(os.getenv("HOME"), 'amele')
+json_path = os.path.split(os.path.realpath(__file__))[0]
 formats = commands.keys()
 
 replace = {'_path_': lambda x: x[0] if not x[0].endswith('/') else x[0][:-1],
@@ -41,7 +39,10 @@ def save_json(json_name, data):
 # monitor.commands oluyor, import ettigim modulun commands'i olmuyor
 def load_commands():
     global commands, formats
-    commands = load_json('commands.json')
+    try:
+        commands = load_json('commands.json')
+    except IOError:
+        save_commands()
     formats = commands.keys()
 
 def save_commands():
@@ -49,7 +50,10 @@ def save_commands():
 
 def load_folders():
     global folders
-    folders = load_json('folders.json')
+    try:
+        folders = load_json('folders.json')
+    except IOError:
+        save_folders()
 
 def save_folders():
     save_json('folders.json', folders)

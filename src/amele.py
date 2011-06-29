@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 import sys
-import atexit
 
 import monitor
 
@@ -13,8 +12,7 @@ from MainWindow import Ui_MainForm
 from AddCmdDialog import Ui_AddCmdDialog
 
 from notifier_backend import PAbstractBox
-from notifier_backend import OUT, TOPCENTER, MIDCENTER, CURRENT, OUT, BOTCENTER
-from notifier_backend import QProgressIndicator
+from notifier_backend import OUT, MIDCENTER, BOTCENTER
 
 
 class Main(QtGui.QMainWindow):

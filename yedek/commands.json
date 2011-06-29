@@ -1,8 +1,0 @@
-{
-    "qrc": [
-        "pyrcc4 _path_/_name_._frm_ > _path_/../_name__rc.py"
-    ], 
-    "ui": [
-        "pyuic4 _path_/_name_._frm_ -o _path_/_name_.py"
-    ]
-}
