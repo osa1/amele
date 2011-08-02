@@ -76,6 +76,7 @@ def toggle_folder_recursion(path):
 
 def add_command(frm, cmd):
     global formats
+    frm, cmd = str(frm), str(cmd)
 
     d = commands.get(frm, [])
     d = commands.setdefault(frm, [])
