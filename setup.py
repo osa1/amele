@@ -35,6 +35,7 @@ class Install(install):
             root_dir = '/usr'
         bin_dir = os.path.join(root_dir, 'bin')
         home_dir = os.getenv('HOME')
+        os.system('mkdir %s/amele' % home_dir)
 
         #os.system('rm -rf %s/amele' % home_dir)
         os.system('cp -R build/* %s/amele' % home_dir)
@@ -42,6 +43,7 @@ class Install(install):
         print 'Need root access to create bin(/usr/bin)'
         os.system('sudo ln -s %s %s' % (os.path.join(home_dir, 'amele/amele.py'),
                                         os.path.join(bin_dir, 'amele')))
+        print 'Done.'
 
 setup(cmdclass = {'build'  : Build,
                   'install': Install})
