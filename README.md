@@ -1,5 +1,4 @@
-AMELE
-=====
+# AMELE
 
 Amele is a simple PyQT app which watches arbitrary folders(with or without subfolders)
 and runs commands when files with formats of your choice added/modified.
@@ -18,10 +17,12 @@ to install,
     ./setup.py install
 
 to uninstall,
+
     rm -rf ~/amele
 
     sudo rm /usr/bin/amele
 
-TODO: 
+TODO:
+
 - Better handling for copying(adding) huge files.
 - Better setup script.
